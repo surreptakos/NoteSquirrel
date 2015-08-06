@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
         saveBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                
+                // Will fill in more here in the next tutorial
             }
         });
 
