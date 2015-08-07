@@ -4,4 +4,6 @@
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
     <string name="DefaultString">Enter your text here.</string>
+    <string name="SaveButtonClicked">Save button clicked</string>
+    <string name="DebugTag">DJG</string>
 </resources>
