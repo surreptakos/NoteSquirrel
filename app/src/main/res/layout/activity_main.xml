@@ -11,6 +11,8 @@
 
     <!-- EditText will take up all additional space since nothing else has a layout_weight, dood -->
     <EditText
+        android:id="@+id/text"
+        android:maxLength="400"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"

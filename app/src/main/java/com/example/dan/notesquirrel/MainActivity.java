@@ -1,5 +1,6 @@
 package com.example.dan.notesquirrel;
 
+import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -7,10 +8,14 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
+
+import java.io.FileNotFoundException;
 
 public class MainActivity extends AppCompatActivity {
     
     public static final String DEBUGTAG = "DJG";
+    public static final String TEXTFILE = "notesquirrel.txt";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,8 +32,16 @@ public class MainActivity extends AppCompatActivity {
         saveBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //Bobadook
-                Log.d(DEBUGTAG, getString(R.string.SaveButtonClicked));
+                EditText editText = (EditText) findViewById(R.id.text);
+
+                String text = editText.getText().toString();
+
+                try {
+                    openFileOutput(TEXTFILE, Context.MODE_PRIVATE);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                Log.d(DEBUGTAG, getString(R.string.SaveButtonClicked) + text);
             }
         });
 
