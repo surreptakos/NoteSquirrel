@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void addSaveButtonListener() {
         Button saveBtn = (Button) findViewById(R.id.save);
-
+        //Bunch of bullshit
         saveBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
