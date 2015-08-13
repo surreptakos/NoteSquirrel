@@ -6,4 +6,5 @@
     <string name="DefaultString">Enter your text here.</string>
     <string name="SaveButtonClicked">Save button clicked</string>
     <string name="DebugTag">DJG</string>
+    <string name="UnableToSaveFileText">Unable to save file</string>
 </resources>

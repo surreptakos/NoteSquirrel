@@ -10,10 +10,15 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import java.io.BufferedReader;
+import java.io.DataInputStream;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.InputStreamReader;
 
 public class MainActivity extends AppCompatActivity {
-    
+
     public static final String DEBUGTAG = "DJG";
     public static final String TEXTFILE = "notesquirrel.txt";
 
@@ -24,11 +29,31 @@ public class MainActivity extends AppCompatActivity {
 
         addSaveButtonListener();
 
+        loadSavedFile();
+
+    }
+
+    private void loadSavedFile() {
+        try {
+            FileInputStream fis = openFileInput(TEXTFILE);
+
+            BufferedReader reader = new BufferedReader(new InputStreamReader(new DataInputStream(fis)));
+            EditText editText = (EditText) findViewById(R.id.text);
+            String line;
+
+            while ((line = reader.readLine()) != null) {
+                editText.append(line);
+                editText.append("\n");
+            }
+            fis.close();
+        } catch (Exception e) {
+            Log.d(DEBUGTAG, "Unable to read file.");
+        }
+
     }
 
     private void addSaveButtonListener() {
         Button saveBtn = (Button) findViewById(R.id.save);
-        //Bunch of bullshit
         saveBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -37,11 +62,13 @@ public class MainActivity extends AppCompatActivity {
                 String text = editText.getText().toString();
 
                 try {
-                    openFileOutput(TEXTFILE, Context.MODE_PRIVATE);
+                    FileOutputStream fos = openFileOutput(TEXTFILE, Context.MODE_PRIVATE);
+                    fos.write(text.getBytes());
+                    fos.close();
                 } catch (Exception e) {
-                    e.printStackTrace();
+                    Log.d(DEBUGTAG, getString(R.string.UnableToSaveFileText));
                 }
-                Log.d(DEBUGTAG, getString(R.string.SaveButtonClicked) + text);
+
             }
         });
 
