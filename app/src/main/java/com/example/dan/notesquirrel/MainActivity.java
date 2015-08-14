@@ -43,11 +43,11 @@ public class MainActivity extends AppCompatActivity {
 
             while ((line = reader.readLine()) != null) {
                 editText.append(line);
-                editText.append("\n");
+                editText.append(getString(R.string.NewLineChar));
             }
             fis.close();
         } catch (Exception e) {
-            Log.d(DEBUGTAG, "Unable to read file.");
+            Log.d(DEBUGTAG, getString(R.string.UnableToReadFile));
         }
 
     }

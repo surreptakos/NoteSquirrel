@@ -7,4 +7,7 @@
     <string name="SaveButtonClicked">Save button clicked</string>
     <string name="DebugTag">DJG</string>
     <string name="UnableToSaveFileText">Unable to save file</string>
+    <string name="Save">Save</string>
+    <string name="UnableToReadFile">Unable to read file.</string>
+    <string name="NewLineChar">\n</string>
 </resources>
