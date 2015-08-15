@@ -10,6 +10,7 @@
     tools:context=".MainActivity">
 
     <!-- EditText will take up all additional space since nothing else has a layout_weight, dood -->
+    <!-- Dah -->
     <EditText
         android:id="@+id/text"
         android:maxLength="400"
