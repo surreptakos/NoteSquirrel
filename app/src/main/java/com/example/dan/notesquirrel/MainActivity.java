@@ -1,6 +1,7 @@
 package com.example.dan.notesquirrel;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -21,6 +22,8 @@ public class MainActivity extends AppCompatActivity {
 
     public static final String DEBUGTAG = "DJG";
     public static final String TEXTFILE = "notesquirrel.txt";
+    public static final String FILESAVED = "FileSaved";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,7 +32,12 @@ public class MainActivity extends AppCompatActivity {
 
         addSaveButtonListener();
 
-        loadSavedFile();
+        SharedPreferences prefs = getPreferences(MODE_PRIVATE);
+        if (prefs.getBoolean(FILESAVED, false)) {
+            loadSavedFile();
+        } else {
+            Log.d(DEBUGTAG, "No file ever saved.");
+        }
 
     }
 
@@ -65,9 +73,15 @@ public class MainActivity extends AppCompatActivity {
                     FileOutputStream fos = openFileOutput(TEXTFILE, Context.MODE_PRIVATE);
                     fos.write(text.getBytes());
                     fos.close();
+
+                    SharedPreferences prefs = getPreferences(MODE_PRIVATE);
+                    SharedPreferences.Editor editor = prefs.edit();
+                    editor.putBoolean(FILESAVED, true);
+                    editor.commit();
                 } catch (Exception e) {
                     Log.d(DEBUGTAG, getString(R.string.UnableToSaveFileText));
                 }
+
 
             }
         });
