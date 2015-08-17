@@ -10,6 +10,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import java.io.BufferedReader;
 import java.io.DataInputStream;
@@ -36,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
         if (prefs.getBoolean(FILESAVED, false)) {
             loadSavedFile();
         } else {
-            Log.d(DEBUGTAG, "No file ever saved.");
+            Toast.makeText(MainActivity.this, getString(R.string.NoTextSaved), Toast.LENGTH_LONG).show();
         }
 
     }
@@ -55,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
             }
             fis.close();
         } catch (Exception e) {
-            Log.d(DEBUGTAG, getString(R.string.UnableToReadFile));
+            Toast.makeText(MainActivity.this, getString(R.string.UnableToReadFile), Toast.LENGTH_LONG).show();
         }
 
     }
@@ -70,6 +71,7 @@ public class MainActivity extends AppCompatActivity {
                 String text = editText.getText().toString();
 
                 try {
+
                     FileOutputStream fos = openFileOutput(TEXTFILE, Context.MODE_PRIVATE);
                     fos.write(text.getBytes());
                     fos.close();
@@ -78,8 +80,9 @@ public class MainActivity extends AppCompatActivity {
                     SharedPreferences.Editor editor = prefs.edit();
                     editor.putBoolean(FILESAVED, true);
                     editor.commit();
+
                 } catch (Exception e) {
-                    Log.d(DEBUGTAG, getString(R.string.UnableToSaveFileText));
+                    Toast.makeText(MainActivity.this, getString(R.string.toast_cant_save), Toast.LENGTH_LONG).show();
                 }
 
 

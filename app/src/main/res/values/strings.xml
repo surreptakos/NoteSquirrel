@@ -10,4 +10,6 @@
     <string name="Save">Save</string>
     <string name="UnableToReadFile">Unable to read file.</string>
     <string name="NewLineChar">\n</string>
+    <string name="toast_cant_save">Unable to save note. Is there sufficient space?</string>
+    <string name="NoTextSaved">No text saved. Creating blank text file.</string>
 </resources>
