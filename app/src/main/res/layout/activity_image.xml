@@ -7,7 +7,9 @@
     <ImageView
         android:id="@+id/touch_image"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:contentDescription="@string/PasswordImage"
+        android:src="@drawable/image_default" />
 
 
 </LinearLayout>
