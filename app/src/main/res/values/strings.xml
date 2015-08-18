@@ -12,4 +12,5 @@
     <string name="NewLineChar">\n</string>
     <string name="toast_cant_save">Unable to save note. Is there sufficient space?</string>
     <string name="NoTextSaved">No text saved. Creating blank text file.</string>
+    <string name="title_activity_image">Image</string>
 </resources>
