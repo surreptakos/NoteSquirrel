@@ -1,5 +1,7 @@
 package com.example.dan.notesquirrel;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -19,6 +21,25 @@ public class Image extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_image);
         addTouchListener();
+    }
+
+    private void showPrompt() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+
+        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+            }
+        });
+
+        builder.setTitle("Create your PassPoint Sequence");
+        builder.setMessage("Touch four points on the image to set your passpoint sequence. You will need to click these same points in the future to access NoteSquirrel.");
+
+        AlertDialog dlg = builder.create();
+
+        dlg.show();
+
     }
 
     private void addTouchListener() {
