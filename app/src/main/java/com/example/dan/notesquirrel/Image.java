@@ -12,6 +12,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageView;
 
+// 8/26/15: It's too late, I goofed.
 
 public class Image extends AppCompatActivity {
 
