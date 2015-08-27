@@ -5,7 +5,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
-
+// 8/26/15: I don't have time tonight, I fucked up doe. It's almost 11.
 public class Image extends ActionBarActivity {
 
     @Override
