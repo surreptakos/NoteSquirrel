@@ -2,6 +2,7 @@ package com.example.dan.notesquirrel;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.graphics.Point;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -12,9 +13,11 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageView;
 
-// 8/26/15: It's too late, I goofed.
+import java.util.List;
 
-public class Image extends AppCompatActivity {
+public class Image extends AppCompatActivity implements PointCollectorListener {
+
+    private PointCollector pointCollector = new PointCollector();
 
 
     @Override
@@ -22,6 +25,9 @@ public class Image extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_image);
         addTouchListener();
+
+        showPrompt();
+        pointCollector.setListener(this);
     }
 
     private void showPrompt() {
@@ -41,24 +47,13 @@ public class Image extends AppCompatActivity {
 
         dlg.show();
 
+
     }
 
     private void addTouchListener() {
         ImageView image = (ImageView) findViewById(R.id.touch_image);
 
-        image.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                float x = event.getX();
-                float y = event.getY();
-
-                String message = String.format("Coordinates: (%.2f, %.2f)", x, y);
-
-                Log.d(MainActivity.DEBUGTAG, message);
-
-                return false;
-            }
-        });
+        image.setOnTouchListener(pointCollector);
     }
 
 
@@ -82,5 +77,10 @@ public class Image extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void pointsCollected(List<Point> points) {
+        Log.d(MainActivity.DEBUGTAG, "Collected points: " + points.size());
     }
 }
