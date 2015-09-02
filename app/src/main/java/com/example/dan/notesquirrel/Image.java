@@ -19,6 +19,7 @@ public class Image extends AppCompatActivity implements PointCollectorListener {
 
     private PointCollector pointCollector = new PointCollector();
 
+    // Fuck everything right now 9/1/15
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
