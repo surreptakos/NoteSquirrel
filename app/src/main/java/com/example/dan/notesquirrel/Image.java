@@ -3,14 +3,11 @@ package com.example.dan.notesquirrel;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.graphics.Point;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.MotionEvent;
-import android.view.View;
 import android.widget.ImageView;
 
 import java.util.List;
@@ -18,8 +15,7 @@ import java.util.List;
 public class Image extends AppCompatActivity implements PointCollectorListener {
 
     private PointCollector pointCollector = new PointCollector();
-
-    // Fuck everything right now 9/1/15
+    private Database db = new Database(this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
