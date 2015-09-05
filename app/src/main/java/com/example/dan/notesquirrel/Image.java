@@ -79,5 +79,7 @@ public class Image extends AppCompatActivity implements PointCollectorListener {
     @Override
     public void pointsCollected(List<Point> points) {
         Log.d(MainActivity.DEBUGTAG, "Collected points: " + points.size());
+
+        db.storePoints(points);
     }
 }
