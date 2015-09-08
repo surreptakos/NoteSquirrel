@@ -2,10 +2,12 @@ package com.example.dan.notesquirrel;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.graphics.Point;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -52,6 +54,30 @@ public class Database extends SQLiteOpenHelper {
         }
 
         db.close();
+
+    }
+
+    public List<Point> getPoints() {
+        List<Point> points = new ArrayList<Point>();
+        SQLiteDatabase db = getReadableDatabase();
+
+        String sql = String.format("SELECT %s, %s FROM %s ORDER BY %s", COL_X, COL_Y, POINTS_TABLE, COL_ID);
+
+        Cursor cursor = db.rawQuery(sql, null);
+
+        while (cursor.moveToNext()) {
+            int x = cursor.getInt(0);
+            int y = cursor.getInt(1);
+
+            points.add(new Point(x,y));
+        }
+
+        cursor.close();
+
+
+        db.close();
+
+        return points;
 
     }
 }

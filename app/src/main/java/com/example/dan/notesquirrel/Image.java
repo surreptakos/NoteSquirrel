@@ -81,5 +81,11 @@ public class Image extends AppCompatActivity implements PointCollectorListener {
         Log.d(MainActivity.DEBUGTAG, "Collected points: " + points.size());
 
         db.storePoints(points);
+
+        List<Point> list = db.getPoints();
+
+        for (Point point : list) {
+            Log.d(MainActivity.DEBUGTAG, String.format("Got point: (%d, %d)", point.x, point.y));
+        }
     }
 }
