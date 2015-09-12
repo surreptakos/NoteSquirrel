@@ -14,4 +14,5 @@
     <string name="NoTextSaved">No text saved. Creating blank text file.</string>
     <string name="title_activity_image">Passpoints Image</string>
     <string name="PasswordImage">Password Image</string>
+    <string name="storing_data">Storing data...</string>
 </resources>

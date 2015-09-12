@@ -60,7 +60,6 @@ public class Database extends SQLiteOpenHelper {
     public List<Point> getPoints() {
         List<Point> points = new ArrayList<Point>();
         SQLiteDatabase db = getReadableDatabase();
-        // Fuck everything
 
         String sql = String.format("SELECT %s, %s FROM %s ORDER BY %s", COL_X, COL_Y, POINTS_TABLE, COL_ID);
 

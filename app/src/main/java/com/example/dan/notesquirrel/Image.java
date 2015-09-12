@@ -3,6 +3,7 @@ package com.example.dan.notesquirrel;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.graphics.Point;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -77,15 +78,36 @@ public class Image extends AppCompatActivity implements PointCollectorListener {
     }
 
     @Override
-    public void pointsCollected(List<Point> points) {
-        Log.d(MainActivity.DEBUGTAG, "Collected points: " + points.size());
+    public void pointsCollected(final List<Point> points) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage(getString(R.string.storing_data));
 
-        db.storePoints(points);
+        final AlertDialog dlg = builder.create();
+        dlg.show();
 
-        List<Point> list = db.getPoints();
+        AsyncTask<Void, Void, Void> task = new AsyncTask<Void, Void, Void>() {
+            @Override
+            protected Void doInBackground(Void... params) {
+                try {
+                    Thread.sleep(1000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
 
-        for (Point point : list) {
-            Log.d(MainActivity.DEBUGTAG, String.format("Got point: (%d, %d)", point.x, point.y));
-        }
+                db.storePoints(points);
+                Log.d(MainActivity.DEBUGTAG, "Points saved");
+
+                return null;
+            }
+
+            @Override
+            protected void onPostExecute(Void aVoid) {
+                dlg.dismiss();
+            }
+        };
+
+        task.execute();
+
+
     }
 }
