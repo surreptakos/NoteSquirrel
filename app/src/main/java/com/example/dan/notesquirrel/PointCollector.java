@@ -30,7 +30,7 @@ public class PointCollector implements View.OnTouchListener {
         if (points.size() == 4) {
             if(listener != null) {
                 listener.pointsCollected(points);
-                points.clear();
+
             }
 
         }
@@ -41,5 +41,10 @@ public class PointCollector implements View.OnTouchListener {
 
     public void setListener(PointCollectorListener listener) {
         this.listener = listener;
+    }
+
+    //Call this after saving your points
+    public void clear() {
+        points.clear();
     }
 }
