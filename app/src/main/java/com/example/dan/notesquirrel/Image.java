@@ -19,6 +19,9 @@ public class Image extends AppCompatActivity implements PointCollectorListener {
     private static final String PASSWORD_SET = "PASSWORD_SET";
     private PointCollector pointCollector = new PointCollector();
     private Database db = new Database(this);
+    // Now I understand where DDMS and File Explorer are. SharedPreferences are stored on the
+    // device, which is emulated in our case. So I need to run Android Device Monitor to access the
+    // files.
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
