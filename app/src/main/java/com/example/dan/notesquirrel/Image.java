@@ -2,6 +2,7 @@ package com.example.dan.notesquirrel;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Point;
 import android.os.AsyncTask;
@@ -11,6 +12,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import java.util.List;
 
@@ -131,6 +133,37 @@ public class Image extends AppCompatActivity implements PointCollectorListener {
     }
 
     private void verifyPasspoints(final List<Point> points) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage(R.string.verifying_passpoints);
+
+        final AlertDialog dlg = builder.create();
+        dlg.show();
+
+        AsyncTask<Void, Void, Boolean> task = new AsyncTask<Void, Void, Boolean>() {
+            @Override
+            protected Boolean doInBackground(Void... params) {
+
+
+                return true;
+            }
+
+            //Whatever we return in doInBackground is sent to this method
+            @Override
+            protected void onPostExecute(Boolean pass) {
+                dlg.dismiss();
+                pointCollector.clear();
+
+                if(pass) {
+                    Intent i = new Intent(Image.this, MainActivity.class);
+                    startActivity(i);
+                } else {
+                    Toast.makeText(Image.this, R.string.Access_Denied, Toast.LENGTH_LONG).show();
+                }
+
+            }
+        };
+
+        task.execute();
 
 
     }
