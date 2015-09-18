@@ -21,6 +21,8 @@ public class Image extends AppCompatActivity implements PointCollectorListener {
     private static final String PASSWORD_SET = "PASSWORD_SET";
     private PointCollector pointCollector = new PointCollector();
     private Database db = new Database(this);
+    private static final int MAX_DIST = 40;
+
     // Now I understand where DDMS and File Explorer are. SharedPreferences are stored on the
     // device, which is emulated in our case. So I need to run Android Device Monitor to access the
     // files.
@@ -132,7 +134,7 @@ public class Image extends AppCompatActivity implements PointCollectorListener {
 
     }
 
-    private void verifyPasspoints(final List<Point> points) {
+    private void verifyPasspoints(final List<Point> touchedPoints) {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setMessage(R.string.verifying_passpoints);
 
@@ -142,7 +144,28 @@ public class Image extends AppCompatActivity implements PointCollectorListener {
         AsyncTask<Void, Void, Boolean> task = new AsyncTask<Void, Void, Boolean>() {
             @Override
             protected Boolean doInBackground(Void... params) {
+                List<Point> savedPoints = db.getPoints();
 
+                Log.d(MainActivity.DEBUGTAG, "Loaded points: " + savedPoints.size());
+
+                if(savedPoints.size() != PointCollector.NUM_POINTS
+                        || touchedPoints.size() != PointCollector.NUM_POINTS) {
+                    return false;
+                }
+
+                for(int i = 0; i < PointCollector.NUM_POINTS; i++) {
+                    Point savedPoint = savedPoints.get(i);
+                    Point touchedPoint = touchedPoints.get(i);
+
+                    int xDiff = savedPoint.x - touchedPoint.x;
+                    int yDiff = savedPoint.y - touchedPoint.y;
+
+                    double distanceSquared = xDiff * xDiff + yDiff * yDiff;
+
+                    if(distanceSquared > MAX_DIST * MAX_DIST) {
+                        return false;
+                    }
+                }
 
                 return true;
             }
