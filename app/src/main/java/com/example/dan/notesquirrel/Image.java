@@ -177,6 +177,7 @@ public class Image extends AppCompatActivity implements PointCollectorListener {
                 pointCollector.clear();
 
                 if(pass) {
+                    // Intents are used to start new activities
                     Intent i = new Intent(Image.this, MainActivity.class);
                     startActivity(i);
                 } else {
