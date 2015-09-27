@@ -192,6 +192,8 @@ public class Image extends AppCompatActivity implements PointCollectorListener {
 
     }
 
+//derp
+
     @Override
     public void pointsCollected(final List<Point> points) {
         SharedPreferences prefs = getPreferences(MODE_PRIVATE);
