@@ -17,4 +17,5 @@
     <string name="storing_data">Storing data...</string>
     <string name="verifying_passpoints">Verifying passpoints...</string>
     <string name="Access_Denied">Access Denied</string>
+    <string name="Lock">Lock</string>
 </resources>

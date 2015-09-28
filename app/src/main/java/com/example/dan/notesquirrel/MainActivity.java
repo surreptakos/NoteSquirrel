@@ -1,10 +1,10 @@
 package com.example.dan.notesquirrel;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
+import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -15,7 +15,6 @@ import android.widget.Toast;
 import java.io.BufferedReader;
 import java.io.DataInputStream;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.InputStreamReader;
 
@@ -32,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         addSaveButtonListener();
+        addLockButtonListener();
 
         SharedPreferences prefs = getPreferences(MODE_PRIVATE);
         if (prefs.getBoolean(FILESAVED, false)) {
@@ -85,6 +85,20 @@ public class MainActivity extends AppCompatActivity {
                     Toast.makeText(MainActivity.this, getString(R.string.toast_cant_save), Toast.LENGTH_LONG).show();
                 }
 
+
+            }
+        });
+
+    }
+
+    private void addLockButtonListener() {
+        Button lockBtn = (Button) findViewById(R.id.lock);
+        lockBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent i = new Intent(MainActivity.this, Image.class);
+                startActivity(i);
 
             }
         });
