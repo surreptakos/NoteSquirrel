@@ -24,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
     public static final String TEXTFILE = "notesquirrel.txt";
     public static final String FILESAVED = "FileSaved";
 
+    // Chase is dumb af
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
