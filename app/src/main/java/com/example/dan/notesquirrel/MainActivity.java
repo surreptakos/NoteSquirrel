@@ -24,7 +24,6 @@ public class MainActivity extends AppCompatActivity {
     public static final String TEXTFILE = "notesquirrel.txt";
     public static final String FILESAVED = "FileSaved";
 
-    // Chase is dumb af
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,6 +60,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
     }
+
 
     private void addSaveButtonListener() {
         Button saveBtn = (Button) findViewById(R.id.save);
@@ -118,13 +118,18 @@ public class MainActivity extends AppCompatActivity {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
+        switch (item.getItemId()) {
+            case R.id.menu_passpoints_reset:
+                Toast.makeText(this, "Hello", Toast.LENGTH_LONG).show();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+
         }
 
-        return super.onOptionsItemSelected(item);
+
     }
 }
+
+

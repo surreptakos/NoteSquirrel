@@ -18,4 +18,5 @@
     <string name="verifying_passpoints">Verifying passpoints...</string>
     <string name="Access_Denied">Access Denied</string>
     <string name="Lock">Lock</string>
+    <string name="menu_passpoints_reset">Reset Passpoints</string>
 </resources>
