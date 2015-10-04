@@ -23,6 +23,7 @@ public class MainActivity extends AppCompatActivity {
     public static final String DEBUGTAG = "DJG";
     public static final String TEXTFILE = "notesquirrel.txt";
     public static final String FILESAVED = "FileSaved";
+    public static final String RESET_PASSPOINTS = "ResetPasspoints";
 
 
     @Override
@@ -121,7 +122,9 @@ public class MainActivity extends AppCompatActivity {
 
         switch (item.getItemId()) {
             case R.id.menu_passpoints_reset:
-                Toast.makeText(this, "Hello", Toast.LENGTH_LONG).show();
+                Intent i = new Intent(this, Image.class);
+                i.putExtra(RESET_PASSPOINTS, true);
+                startActivity(i);
                 return true;
             default:
                 return super.onOptionsItemSelected(item);

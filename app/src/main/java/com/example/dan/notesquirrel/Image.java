@@ -19,9 +19,9 @@ import java.util.List;
 public class Image extends AppCompatActivity implements PointCollectorListener {
 
     private static final String PASSWORD_SET = "PASSWORD_SET";
+    private static final int MAX_DIST = 40;
     private PointCollector pointCollector = new PointCollector();
     private Database db = new Database(this);
-    private static final int MAX_DIST = 40;
 
     // Now I understand where DDMS and File Explorer are. SharedPreferences are stored on the
     // device, which is emulated in our case. So I need to run Android Device Monitor to access the
@@ -32,6 +32,17 @@ public class Image extends AppCompatActivity implements PointCollectorListener {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_image);
         addTouchListener();
+
+        Bundle extras = getIntent().getExtras();
+
+        if (extras != null) {
+            Boolean resetPasspoints = extras.getBoolean(MainActivity.RESET_PASSPOINTS);
+
+            if (resetPasspoints) {
+                //Reset the passpoints here.
+                //Need to actually implement
+            }
+        }
 
         SharedPreferences prefs = getPreferences(MODE_PRIVATE);
         Boolean passpointsSet = prefs.getBoolean(PASSWORD_SET, false);
@@ -131,7 +142,6 @@ public class Image extends AppCompatActivity implements PointCollectorListener {
         task.execute();
 
 
-
     }
 
     private void verifyPasspoints(final List<Point> touchedPoints) {
@@ -148,12 +158,12 @@ public class Image extends AppCompatActivity implements PointCollectorListener {
 
                 Log.d(MainActivity.DEBUGTAG, "Loaded points: " + savedPoints.size());
 
-                if(savedPoints.size() != PointCollector.NUM_POINTS
+                if (savedPoints.size() != PointCollector.NUM_POINTS
                         || touchedPoints.size() != PointCollector.NUM_POINTS) {
                     return false;
                 }
 
-                for(int i = 0; i < PointCollector.NUM_POINTS; i++) {
+                for (int i = 0; i < PointCollector.NUM_POINTS; i++) {
                     Point savedPoint = savedPoints.get(i);
                     Point touchedPoint = touchedPoints.get(i);
 
@@ -162,7 +172,7 @@ public class Image extends AppCompatActivity implements PointCollectorListener {
 
                     double distanceSquared = xDiff * xDiff + yDiff * yDiff;
 
-                    if(distanceSquared > MAX_DIST * MAX_DIST) {
+                    if (distanceSquared > MAX_DIST * MAX_DIST) {
                         return false;
                     }
                 }
@@ -176,7 +186,7 @@ public class Image extends AppCompatActivity implements PointCollectorListener {
                 dlg.dismiss();
                 pointCollector.clear();
 
-                if(pass) {
+                if (pass) {
                     // Intents are used to start new activities
                     Intent i = new Intent(Image.this, MainActivity.class);
                     startActivity(i);
@@ -199,7 +209,7 @@ public class Image extends AppCompatActivity implements PointCollectorListener {
         SharedPreferences prefs = getPreferences(MODE_PRIVATE);
         Boolean passpointsSet = prefs.getBoolean(PASSWORD_SET, false);
 
-        if(!passpointsSet) {
+        if (!passpointsSet) {
             Log.d(MainActivity.DEBUGTAG, "Saving passpoints...");
             savePasspoints(points);
         } else {
