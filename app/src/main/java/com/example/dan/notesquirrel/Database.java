@@ -35,6 +35,14 @@ public class Database extends SQLiteOpenHelper {
         //Not used
     }
 
+    public void resetPoints() {
+        SQLiteDatabase db = getWritableDatabase();
+
+        db.delete(POINTS_TABLE, null, null);
+        db.close();
+
+    }
+
     public void storePoints(List<Point> points) {
         SQLiteDatabase db = getWritableDatabase();
 
@@ -69,7 +77,7 @@ public class Database extends SQLiteOpenHelper {
             int x = cursor.getInt(0);
             int y = cursor.getInt(1);
 
-            points.add(new Point(x,y));
+            points.add(new Point(x, y));
         }
 
         cursor.close();

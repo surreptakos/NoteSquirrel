@@ -39,13 +39,14 @@ public class Image extends AppCompatActivity implements PointCollectorListener {
             Boolean resetPasspoints = extras.getBoolean(MainActivity.RESET_PASSPOINTS);
 
             if (resetPasspoints) {
-                //Reset the passpoints here.
-                //Need to actually implement
+                resetPasspoints();
             }
         }
 
         SharedPreferences prefs = getPreferences(MODE_PRIVATE);
         Boolean passpointsSet = prefs.getBoolean(PASSWORD_SET, false);
+
+        Log.d(MainActivity.DEBUGTAG, "Value of passpointsSet: " + passpointsSet);
 
         if (!passpointsSet) {
             showSetPasspointsPrompt();
@@ -103,6 +104,20 @@ public class Image extends AppCompatActivity implements PointCollectorListener {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    private void resetPasspoints() {
+
+        Toast.makeText(Image.this, R.string.passpointsResetSuccessfully, Toast.LENGTH_LONG).show();
+
+        db.resetPoints();
+
+        SharedPreferences prefs = getPreferences(MODE_PRIVATE);
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.putBoolean(PASSWORD_SET, false);
+        editor.commit();
+
+
     }
 
     private void savePasspoints(final List<Point> points) {

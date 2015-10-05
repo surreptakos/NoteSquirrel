@@ -19,4 +19,6 @@
     <string name="Access_Denied">Access Denied</string>
     <string name="Lock">Lock</string>
     <string name="menu_passpoints_reset">Reset Passpoints</string>
+    <string name="resettingPasspoints">Resetting Passpoints...</string>
+    <string name="passpointsResetSuccessfully">PassPoints reset successfully</string>
 </resources>
