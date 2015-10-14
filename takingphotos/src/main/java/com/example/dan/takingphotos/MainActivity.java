@@ -1,6 +1,8 @@
 package com.example.dan.takingphotos;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
@@ -10,6 +12,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.Toast;
 
 import java.io.File;
 
@@ -50,7 +54,14 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == PHOTO_TAKEN) {
+            Bitmap photo = BitmapFactory.decodeFile(imageFile.getAbsolutePath());
 
+            if (photo != null) {
+                ImageView imageView = (ImageView) findViewById(R.id.imageView);
+                imageView.setImageBitmap(photo);
+            } else {
+                Toast.makeText(this, R.string.unable_to_save_photo_file, Toast.LENGTH_LONG).show();
+            }
         }
     }
 
