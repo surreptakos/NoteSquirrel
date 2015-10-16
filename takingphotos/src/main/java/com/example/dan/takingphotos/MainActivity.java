@@ -65,7 +65,6 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    //tired and dongbeared
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
