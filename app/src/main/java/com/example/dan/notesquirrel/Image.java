@@ -42,6 +42,7 @@ public class Image extends AppCompatActivity implements PointCollectorListener {
                 resetPasspoints();
             }
         }
+        //party tiem
 
         SharedPreferences prefs = getPreferences(MODE_PRIVATE);
         Boolean passpointsSet = prefs.getBoolean(PASSWORD_SET, false);
