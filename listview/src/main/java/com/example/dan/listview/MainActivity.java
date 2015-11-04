@@ -6,6 +6,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -20,7 +21,15 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void setListListener() {
+
+        // simple_list_item_1 is part of android.R.layout which is a simple XML layout that makes a simple list item in your list
+        String[] values = getResources().getStringArray(R.array.list_options);
+        values[0] = "Hamster Steve";
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, values);
+
         ListView list = (ListView) findViewById(R.id.List);
+        list.setAdapter(adapter);
 
         list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -36,7 +45,6 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    //derpderpderp
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
