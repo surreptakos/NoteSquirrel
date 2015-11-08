@@ -2,9 +2,12 @@ package com.example.mary.customlists;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ListView;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class MainActivity extends Activity {
@@ -13,7 +16,30 @@ public class MainActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        setupEmailList();
     }
+
+    private void setupEmailList() {
+        // Retrieve these messages from somewhere...
+        List<Message> messages = new ArrayList<>();
+
+        messages.add(new Message(0, "Bob Smith", "My cat has eaten my wife."));
+        messages.add(new Message(1, "Bob's Cat", "She was delicious. You're next."));
+        messages.add(new Message(2, "Bob's Wife", "MmmmmmMFFFFFfrrrff"));
+        messages.add(new Message(3, "Chimps Ahoy!", "Now with 66.6% more chimps! Buy now now NOW!"));
+
+        ListView listView = (ListView) findViewById(R.id.email_list);
+        //Need an adapter to put objects into a ListView. Need a custom adapter to do anything fancy
+        // Adapters change the objects into Listable objects
+        MessageAdapter adapter = new MessageAdapter(this, messages);
+
+        listView.setAdapter(adapter);
+
+        // Implement handling OnItemClick here
+
+    }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
