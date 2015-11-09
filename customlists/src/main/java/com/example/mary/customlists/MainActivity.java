@@ -24,10 +24,10 @@ public class MainActivity extends Activity {
         // Retrieve these messages from somewhere...
         List<Message> messages = new ArrayList<>();
 
-        messages.add(new Message(0, "Bob Smith", "My cat has eaten my wife."));
-        messages.add(new Message(1, "Bob's Cat", "She was delicious. You're next."));
-        messages.add(new Message(2, "Bob's Wife", "MmmmmmMFFFFFfrrrff"));
-        messages.add(new Message(3, "Chimps Ahoy!", "Now with 66.6% more chimps! Buy now now NOW!"));
+        messages.add(new Message(0, "Bob Smith", "My cat has eaten my wife.", true));
+        messages.add(new Message(1, "Bob's Cat", "She was delicious. You're next.", false));
+        messages.add(new Message(2, "Bob's Wife", "MmmmmmMFFFFFfrrrff", false));
+        messages.add(new Message(3, "Chimps Ahoy!", "Now with 66.6% more chimps! Buy now now NOW!", true));
 
         ListView listView = (ListView) findViewById(R.id.email_list);
         //Need an adapter to put objects into a ListView. Need a custom adapter to do anything fancy
