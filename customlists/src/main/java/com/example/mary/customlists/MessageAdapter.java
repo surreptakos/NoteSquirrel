@@ -43,7 +43,7 @@ public class MessageAdapter extends BaseAdapter implements ListAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
-        View view = inflater.inflate(R.layout.list_message_item, null);
+        View view = inflater.inflate(R.layout.list_message_item2, null);
 
         Message message = messages.get(position);
         String title = message.getTitle();
