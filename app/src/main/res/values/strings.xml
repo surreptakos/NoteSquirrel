@@ -1,24 +1,29 @@
 <resources>
-    <string name="app_name">NoteSquirrel</string>
 
+    <string name="app_name">NoteSquirrel</string>
     <string name="hello_world">Hello world!</string>
-    <string name="action_settings">Settings</string>
-    <string name="DefaultString">Enter your text here.</string>
-    <string name="SaveButtonClicked">Save button clicked</string>
-    <string name="DebugTag">DJG</string>
-    <string name="UnableToSaveFileText">Unable to save file</string>
-    <string name="Save">Save</string>
-    <string name="UnableToReadFile">Unable to read file.</string>
-    <string name="NewLineChar">\n</string>
+    <string name="menu_settings">Settings</string>
+    <string name="title_activity_main">Note Squirrel</string>
+    <string name="edit_text_hint">Enter your text here.</string>
+    <string name="save">Save</string>
     <string name="toast_cant_save">Unable to save note. Is there sufficient space?</string>
-    <string name="NoTextSaved">No text saved. Creating blank text file.</string>
+    <string name="toast_cant_load">Unable to load saved file. </string>
     <string name="title_activity_image">Passpoints Image</string>
-    <string name="PasswordImage">Password Image</string>
-    <string name="storing_data">Storing data...</string>
-    <string name="verifying_passpoints">Verifying passpoints...</string>
-    <string name="Access_Denied">Access Denied</string>
-    <string name="Lock">Lock</string>
+    <string name="password_image">Password Image</string>
+    <string name="saving_passpoints">Storing passpoints ...</string>
+    <string name="create_passpoints">Create Your Passpoint Sequence</string>
+    <string name="create_passpoints_text">Touch four points on the image to set the passpoint sequence. You must click the same points in future to gain access to your notes.</string>
+    <string name="checking_passpoints">Checking passpoints ...</string>
+    <string name="access_denied">Access denied.</string>
+    <string name="lock">Lock</string>
     <string name="menu_passpoints_reset">Reset Passpoints</string>
-    <string name="resettingPasspoints">Resetting Passpoints...</string>
-    <string name="passpointsResetSuccessfully">PassPoints reset successfully</string>
+    <string name="enter_passpoints_title">Login</string>
+    <string name="enter_passpoints_text">You can now log in by re-entering your passpoints.</string>
+    <string name="menu_replace_image">Replace image...</string>
+    <string name="take_a_photo">Take a photo</string>
+    <string name="browse_the_gallery">Browse gallery ...</string>
+    <string name="unable_to_load_photo_file">Unable to load photo file.</string>
+    <string name="unable_to_display_image">Unable to display image</string>
+    <string name="replace_lock_image">Replace Lock Image</string>
+
 </resources>

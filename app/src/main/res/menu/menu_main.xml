@@ -4,7 +4,10 @@
     tools:context=".MainActivity">
     <item
         android:id="@+id/menu_passpoints_reset"
-        android:title="@string/menu_passpoints_reset"
         android:orderInCategory="100"
+        android:title="@string/menu_passpoints_reset"
         app:showAsAction="always" />
+    <item
+        android:id="@+id/menu_replace_image"
+        android:title="@string/menu_replace_image" />
 </menu>
