@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -46,6 +47,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
     }
+
 
     /*
      * This method invokes the Image activity, telling it to get the user to
@@ -173,7 +175,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void browseGallery() {
-        //here we go
+        Intent i = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+        startActivityForResult(i, BROWSE_GALLERY_REQUEST);
 
     }
 
@@ -190,6 +193,34 @@ public class MainActivity extends AppCompatActivity {
         image = Uri.fromFile(imageFile);
         i.putExtra(MediaStore.EXTRA_OUTPUT, image);
         startActivityForResult(i, PHOTO_TAKEN_REQUEST);
+    }
+
+    @Override
+    /*
+     * This method is invoked upon returning from an activity invoked by
+	 * startActivityForResult. We check the requestCode to see which activity we
+	 * returned from.
+	 */
+    protected void onActivityResult(int requestCode, int resultCode,
+                                    Intent intent) {
+
+        if (requestCode == BROWSE_GALLERY_REQUEST) {
+            Toast.makeText(this, "Gallery result: " + intent.getData(), Toast.LENGTH_LONG).show();
+        }
+
+        // Display an error message and return if we don't have an
+        // image URI
+        if (image == null) {
+            Toast.makeText(this, R.string.unable_to_display_image,
+                    Toast.LENGTH_LONG).show();
+            return;
+        }
+
+        Log.d(DEBUGTAG, "Photo: " + image.getPath());
+
+        // Now we can start the image activity and tell it to use
+        // this new image.
+        resetPasspoints(image);
     }
 
     @Override
