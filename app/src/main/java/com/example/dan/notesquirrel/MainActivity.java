@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
@@ -205,7 +206,20 @@ public class MainActivity extends AppCompatActivity {
                                     Intent intent) {
 
         if (requestCode == BROWSE_GALLERY_REQUEST) {
-            Toast.makeText(this, "Gallery result: " + intent.getData(), Toast.LENGTH_LONG).show();
+            String[] columns = {MediaStore.Images.Media.DATA};
+
+            Uri imageUri = intent.getData();
+
+            Cursor cursor = getContentResolver().query(imageUri, columns, null, null, null);
+
+            cursor.moveToFirst();
+
+            int columnIndex = cursor.getColumnIndex(columns[0]);
+            String imagePath = cursor.getString(columnIndex);
+
+            image = Uri.parse(imagePath);
+
+            cursor.close();
         }
 
         // Display an error message and return if we don't have an
