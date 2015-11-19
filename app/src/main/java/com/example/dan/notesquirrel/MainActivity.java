@@ -99,6 +99,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    //dah
     @Override
     protected void onPause() {
         super.onPause();
