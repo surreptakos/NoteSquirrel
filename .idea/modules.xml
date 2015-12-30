@@ -5,9 +5,6 @@
       <module fileurl="file://$PROJECT_DIR$/NoteSquirrel.iml" filepath="$PROJECT_DIR$/NoteSquirrel.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/customlists/customlists.iml" filepath="$PROJECT_DIR$/customlists/customlists.iml" />
-      <module fileurl="file://$PROJECT_DIR$/launchingsub-activities/launchingsub-activities.iml" filepath="$PROJECT_DIR$/launchingsub-activities/launchingsub-activities.iml" />
-      <module fileurl="file://$PROJECT_DIR$/listview/listview.iml" filepath="$PROJECT_DIR$/listview/listview.iml" />
-      <module fileurl="file://$PROJECT_DIR$/takingphotos/takingphotos.iml" filepath="$PROJECT_DIR$/takingphotos/takingphotos.iml" />
     </modules>
   </component>
 </project>

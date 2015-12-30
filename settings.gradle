@@ -1,1 +1,1 @@
-include ':launchingsub-activities', ':takingphotos', ':listview', ':app', ':customlists'
+include ':customlists', ':app'

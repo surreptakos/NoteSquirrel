@@ -20,6 +20,8 @@ public class MainActivity extends AppCompatActivity {
         setListListener();
     }
 
+    //need to wait until this weekend to do any coding
+
     private void setListListener() {
 
         // simple_list_item_1 is part of android.R.layout which is a simple XML layout that makes a simple list item in your list
